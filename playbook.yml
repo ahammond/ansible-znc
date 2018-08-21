@@ -14,6 +14,20 @@
       - "ppa:certbot/certbot"
       - "ppa:teward/znc"
 
+  - name: setup ahammond user
+    user:
+      name: ahammond
+      groups:
+        - sudo
+        - adm
+      password_lock: yes
+
+  - name: ahammond authorized_keys
+    authorized_key:
+      user: ahammond
+      exclusive: true
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICduRJawbmuWIhp6RpnpHpDnUGOTbpDQGhqfdPWsHn4b"
+
   - name: install certificates
     unarchive:
       src: le.tar.bz2
